@@ -20,7 +20,9 @@
                                 label="Email"
                                 name="login"
                                 type="text"
-                                prepend-icon="fa fa-envelope"/>
+                                required
+                                prepend-icon="fa fa-envelope"
+                  />
                   <v-text-field outlined
                                 id="password"
                                 label="Hasło"
@@ -33,12 +35,13 @@
                          @click="login">Zaloguj
                   </v-btn>
                 </div>
-                <v-card-actions class="mt-2">
-                  <v-spacer/>
-                  Nie masz jeszcze konta?
-                  <v-btn text color="accent">Dołącz</v-btn>
-                </v-card-actions>
               </v-card-text>
+              <v-divider></v-divider>
+              <v-card-actions class="mt-2">
+                <v-spacer/>
+                Nie masz jeszcze konta?
+                <v-btn text color="accent">Dołącz</v-btn>
+              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
@@ -75,5 +78,6 @@ export default {
     color: #ebebeb;
     text-align: center;
     font-size: 1.2em;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
   }
 </style>
