@@ -1,0 +1,22 @@
+{
+  "validation": {
+    "required": "Pole jest wymagane",
+    "isEmail": "Błędny email"
+  },
+  "pages": {
+    "login": {
+      "msg": {
+        "no-account": "Nie masz jeszcze konta?",
+        "join": "Dołącz",
+        "title": "Zaloguj się:"
+      },
+      "btn": {
+        "login": "Zaloguj"
+      },
+      "input": {
+        "email": "Email",
+        "password": "Hasło"
+      }
+    }
+  }
+}

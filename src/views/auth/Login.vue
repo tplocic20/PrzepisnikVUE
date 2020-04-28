@@ -10,38 +10,39 @@
                  md="4">
             <v-card class="v-card--outlined">
               <div class="login-header primary">
-                <i class="fa fa-lock"></i> Zaloguj się:
+                <i class="fa fa-lock"></i> {{$t('pages.login.msg.title')}}
               </div>
               <v-card-text>
                 <v-form class="pr-md-4 pl-md-4"
                         ref="form"
                         lazy-validation>
                   <v-text-field outlined
-                                label="Email"
+                                :label="$t('pages.login.input.email')"
                                 name="login"
                                 type="text"
                                 required
-                                :rules="[this.$validators.required()]"
+                                :rules="[this.$validators.required(), this.$validators.isEmail()]"
                                 prepend-icon="fa fa-envelope"
                   />
                   <v-text-field outlined
                                 id="password"
-                                label="Hasło"
+                                :label="$t('pages.login.input.password')"
                                 name="password"
                                 type="password"
+                                :rules="[this.$validators.required()]"
                                 prepend-icon="fa fa-lock"/>
                 </v-form>
                 <div class="text-center">
                   <v-btn large color="primary"
-                         @click="login">Zaloguj
+                         @click="login">{{$t('pages.login.btn.login')}}
                   </v-btn>
                 </div>
               </v-card-text>
               <v-divider></v-divider>
               <v-card-actions class="mt-2">
                 <v-spacer/>
-                Nie masz jeszcze konta?
-                <v-btn text color="accent">Dołącz</v-btn>
+                {{$t('pages.login.msg.no-account')}}
+                <v-btn text color="accent">{{$t('pages.login.msg.join')}}</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -64,6 +65,7 @@ export default {
   methods: {
     login: function () {
       this.show = !this.show;
+      this.$refs.form.validate();
       console.log(this.show);
     }
   }

@@ -1,34 +1,30 @@
 import validator from 'validator';
+import i18n from './i18n';
+import Vue from 'vue';
 
 const rules = {};
 const customRules = {
   required: v => !!v
 };
 
-Object.keys(validator).forEach(function (key) {
-  rules[key] = (...args) => {
-    return value => {
-      let valid = false;
-      try {
-        valid = validator[key](value, ...args);
-      } catch (err) {
-        // nothing
-      }
-      return valid || 'error';
+function parseKeys(keys) {
+  Object.keys(keys).forEach(function (key) {
+    rules[key] = (...args) => {
+      return value => {
+        let valid = false;
+        try {
+          valid = keys[key](value, ...args);
+        } catch (err) {
+          // nothing
+        }
+        return valid || i18n.t(`validation.${key}`);
+      };
     };
-  };
-});
-Object.keys(customRules).forEach(function (key) {
-  rules[key] = (...args) => {
-    return value => {
-      let valid = false;
-      try {
-        valid = customRules[key](value, ...args);
-      } catch (err) {
-        // nothing
-      }
-      return valid || 'error';
-    };
-  };
-});
+  });
+}
+
+parseKeys(validator);
+parseKeys(customRules);
+
+Vue.prototype.$validators = rules;
 export default rules;
