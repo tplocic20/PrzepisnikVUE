@@ -7,10 +7,6 @@
 <script>
 export default {
   name: 'App',
-
-  components: {
-  },
-
   data: () => ({
     //
   })
@@ -18,4 +14,7 @@ export default {
 </script>
 <style lang="scss">
   @import './node_modules/animate.css/animate';
+  .position-relative {
+    position: relative;
+  }
 </style>
