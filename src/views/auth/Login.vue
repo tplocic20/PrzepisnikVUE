@@ -21,6 +21,7 @@
                                 name="login"
                                 type="text"
                                 required
+                                :rules="[this.$validators.required()]"
                                 prepend-icon="fa fa-envelope"
                   />
                   <v-text-field outlined
